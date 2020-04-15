@@ -10,7 +10,6 @@ const masterArr = require('./masterArr.js') // **
 const sequelize = new Sequelize('fake_data', 'root', '1', {
   host: 'localhost',
   dialect: 'mysql'
-})
 
 const FakeHouse = sequelize.define("fakeHouse", {
   address: Sequelize.TEXT,

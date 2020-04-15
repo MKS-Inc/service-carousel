@@ -1,5 +1,0 @@
-DROP DATABASE IF EXISTS fake_data;
-
-CREATE DATABASE IF NOT EXISTS fake_data;
-
-USE fake_data;
