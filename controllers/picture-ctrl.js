@@ -1,4 +1,4 @@
-const Picture = require('../models/pictures-model');
+const Picture = require('../db/models/pictures-model');
 
 exports.getPictures = async (req, res) => {
   await Picture.find({}, (err, pictures) => {

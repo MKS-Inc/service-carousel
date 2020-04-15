@@ -5,7 +5,7 @@ const port = 3002
 const bodyParser = require('body-parser')
 const path = require('path')
 const db = require('../db/dbQueries');
-const mongodb = require('../mongoDB');
+const mongodb = require('../db/mongoDB');
 
 app.use(express.static(path.resolve(__dirname, '../dist/')));
 app.use(bodyParser.urlencoded({ extended: true }))
