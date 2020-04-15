@@ -4,8 +4,6 @@ import SlideShow from './slideShow.jsx'
 import Modal from './modal.jsx'
 import { Container, Box, TopImage, BoxText, TopImageContainer } from "./stylePage.jsx"; // check these styles!
 
-
-
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -23,7 +21,7 @@ class Home extends React.Component {
     let otherThis = this
     axios({
       method: 'GET',
-      url: '/api/gethomepictures'
+      url: '/api/pictures'
     })
       .then(function (response) {
         // set the state to contain our fakeHouse data
