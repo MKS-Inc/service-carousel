@@ -1,5 +1,4 @@
 const express = require('express');
-const mysql = require('../db/mySql');
 const app = express();
 const port = 3003;
 const bodyParser = require('body-parser');
