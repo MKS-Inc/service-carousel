@@ -21,20 +21,17 @@ class Home extends React.Component {
     let otherThis = this;
     axios({
       method: 'GET',
-      url: '/carousel/listings/4/images',
+      url: '/carousel/listings/3/images',
     })
-      .then((res) => {
-        console.log(res.data);
-      });
-
-    // .then(function (response) {
-    //   // set the state to contain our fakeHouse data
-    //   otherThis.setState({
-    //     fakeHouse: response.data.fakeHouse[0],
-    //     fakeUrls: response.data.fakeUrls,
-    //     firstHouse: response.data.fakeUrls[0]
-    //   })
-    // })
+      .then(function (response) {
+        // set the state to contain our fakeHouse data
+        console.log(response.data);
+        otherThis.setState({
+          fakeHouse: response.data.fakeHouse,
+          fakeUrls: response.data.fakeUrls,
+          firstHouse: response.data.fakeUrls[0]
+        })
+      })
   }
   returnHome() {
     this.setState({ slideShow: false })

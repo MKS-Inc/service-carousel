@@ -13,8 +13,21 @@ app.use(bodyParser.json());
 // GET
 app.get('/carousel/listings/:listingId/images', (req, res) => {
   getPictures(req.params.listingId)
-    .then((listing) => {
-      res.send(listing);
+    .then(([listing]) => {
+      const data = {};
+      data.fakeHouse = {
+        address: '123 street',
+        id: req.params.listingId,
+        price: 60,
+      };
+      data.fakeUrls = listing.imageUrls.map((url, i) => {
+        return {
+          id: i,
+          url,
+        };
+      });
+
+      res.send(data);
     })
     .catch((err) => {
       res.send(err);
