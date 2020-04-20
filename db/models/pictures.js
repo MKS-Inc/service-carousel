@@ -1,5 +1,5 @@
-const { Picture } = require('../mongoDb/index.js');
+const { Picture } = require('../mongoDB/index.js');
 
-exports.insertMany = (images) => {
+exports.insertPictures = (images) => {
   return Picture.insertMany(images);
 };

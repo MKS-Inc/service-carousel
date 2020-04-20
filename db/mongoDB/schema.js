@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const pictureSchema = new mongoose.Schema({
   id: Number,
-  source: String,
+  imageUrls: Object, // String
   listingId: Number,
 });
 

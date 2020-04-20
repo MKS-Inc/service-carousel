@@ -10,4 +10,15 @@ mongoose
 
 const db = mongoose.connection;
 
-module.exports = { db, Listing, Picture };
+const getAllListings = () => Listing.find({})
+  .then((data) => data);
+
+const getListings = (listingId) => Listing.findOne({ id: listingId })
+  .then((data) => data);
+
+const getPictures = (id) => Picture.find({ listingId: id })
+  .then((data) => data);
+
+module.exports = {
+  db, Listing, Picture, getAllListings, getListings, getPictures,
+};

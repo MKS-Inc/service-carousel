@@ -1,47 +1,70 @@
-const express = require('express')
-const handlers = require('./handlers.js')
-const app = express()
-const port = 3002
-const bodyParser = require('body-parser')
-const path = require('path')
-const db = require('../db/dbQueries');
-const mongodb = require('../db/mongoDB');
+const express = require('express');
+const mysql = require('../db/mySql');
+const app = express();
+const port = 3003;
+const bodyParser = require('body-parser');
+const path = require('path');
+const { getAllListings, getListings, getPictures } = require('../db/mongoDB/index.js');
 
 app.use(express.static(path.resolve(__dirname, '../dist/')));
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-
-mongodb.on('error', console.error.bind(console, 'MongoDB connection error:'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // GET
-app.get('/api/pictures', handlers.handleGet);
+app.get('/carousel/listings/:listingId/images', (req, res) => {
+  getPictures(req.params.listingId)
+    .then((listing) => {
+      res.send(listing);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
-// DELETE
-app.delete('/api/pictures/:id', (req, res) => {
-    handlers.deletePicture(req.params.id)
-      .then((results) => res.status(200).json(results))
-      .catch((err) => {
-        throw err;
-      });
+app.get('/api/pictures', (req, res) => {
+  getAllListings()
+    .then((listing) => {
+      res.send(listing);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 // CREATE
-// app.post('/api/pictures', (req, res) => {
-//   const id = req.body;
-//   handlers.createPicture(id)
-//     .then((results) => res.status(201).json(results))
+app.post('/carousel/listings/:listingId/images', (req, res) => {
+  mysql.createPicture(req.params.listingId)
+    .then((results) => res.status(201).json(results))
+    .catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+// MYSQL GET
+// app.get('/carousel/listings/:listingId/images', (req, res) => {
+//   mysql.getPictures(req.params.listingId)
+//     .then((results) => res.status(200).json(results))
 //     .catch((err) => {
-//       throw err;
+//       res.sendStatus(404);
 //     });
 // });
 
 // UPDATE
-// app.put('/api/pictures/:id', (req, res) => {
-//   handlers.updatePicture(req.params.id)
-//     .then((results) => res.status(200).json(results))
-//     .catch((err) => {
-//       throw err;
-//     });
-// });
+app.patch('/carousel/listings/:listingId', (req, res) => {
+  mysql.updateListing(req.params.listingId)
+    .then((results) => res.status(204).json(results))
+    .catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+// DELETE
+app.delete('/carousel/images/:imageId', (req, res) => {
+  mysql.deletePicture(req.params.imageId)
+    .then((results) => res.status(204).json(results))
+    .catch((err) => {
+      res.sendStatus(404);
+    });
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
