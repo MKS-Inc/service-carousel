@@ -29,6 +29,7 @@
     "mongoose": "^5.9.9",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+    "newrelic": "^6.6.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-icons": "^3.9.0",

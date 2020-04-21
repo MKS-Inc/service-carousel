@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const app = express();
 const port = 3003;
@@ -8,6 +9,8 @@ const { getAllListings, getListings, getPictures } = require('../db/mongoDB/inde
 app.use(express.static(path.resolve(__dirname, '../dist/')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.locals.newrelic = newrelic;
 
 // GET
 app.get('/carousel/listings/:listingId/images', (req, res) => {
@@ -80,3 +83,7 @@ app.delete('/carousel/images/:imageId', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+
+// run seeders to 10M
+// to the instance
