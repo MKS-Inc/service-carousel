@@ -2,8 +2,8 @@ const Pictures = require('../models/pictures.js');
 const PictureUrls = require('./pictureUrls');
 
 const TOTAL_PICTURE_SETS = PictureUrls.length;
-const TOTAL_LISTINGS = 100; // 10000000
-const BATCH_SIZE = 10; // 1000
+const TOTAL_LISTINGS = 10000000; // 10000000
+const BATCH_SIZE = 1000; // 1000
 const TOTAL_BATCHES = TOTAL_LISTINGS / BATCH_SIZE;
 const LOG_FREQUENCY = TOTAL_LISTINGS / 100;
 
