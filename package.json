@@ -28,6 +28,7 @@
     "loaderio": "0.0.3",
     "mongo": "^0.1.0",
     "mongoose": "^5.9.9",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "newrelic": "^6.6.0",

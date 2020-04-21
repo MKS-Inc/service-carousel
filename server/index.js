@@ -5,7 +5,9 @@ const port = 3003;
 const bodyParser = require('body-parser');
 const path = require('path');
 const { getAllListings, getListings, getPictures } = require('../db/mongoDB/index.js');
+const morgan = require('morgan');
 
+app.use(morgan('dev'));
 app.use(express.static(path.resolve(__dirname, '../dist/')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
