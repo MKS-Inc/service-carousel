@@ -22,3 +22,7 @@ const getPictures = (id) => Picture.find({ listingId: id })
 module.exports = {
   db, Listing, Picture, getAllListings, getListings, getPictures,
 };
+
+
+// indexing
+// how to implement it?

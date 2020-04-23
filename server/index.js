@@ -89,3 +89,11 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // run seeders to 10M
 // to the instance
+
+
+// probably either server is not running,
+// or loaderio is sending the request to the wrong place
+// morgan to see if the requests are actually hitting the server
+
+
+// 
