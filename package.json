@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/apex-io/carousel-commute-schools#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "loaderio": "0.0.3",
